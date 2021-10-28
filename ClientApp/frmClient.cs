@@ -24,7 +24,7 @@ namespace ClientApp
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
-
+        DES des = new DES();
 
         public frmClient()
         {
@@ -84,6 +84,11 @@ namespace ClientApp
                 var decryptedText = asymmetricEncryptDecrypt.Decrypt(responseData.Split(':')[1], privateKey);
                 richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
                 return;
+            }else if (responseData.StartsWith("DES"))
+            {
+                String decryptedText = des.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
+                richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
+                return;
             }
             else
             {
@@ -107,9 +112,9 @@ namespace ClientApp
                 {
                     string privateKey = rsa.ToXmlString(true); // true to get the private key
                     SendMessage("ASYMMETRIC" + ":" + tbEncText.Text + ":" + privateKey);
-                } else
+                } else if(encTypeTXT == "Mã hóa DES")
                 {
-                    // More algorithm here
+                    SendMessage("DES"+":"+ tbEncText.Text +":"+Key);
                 }
 
             } else
@@ -141,6 +146,11 @@ namespace ClientApp
             {
                 string publicKey = rsa.ToXmlString(false); // false to get the public key
                 encryptedText = asymmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), publicKey);
+            }
+            else if(encTypeTXT == "Mã hóa DES")
+            {
+                Key = des.GetEncodedRandomString(32);
+                encryptedText = des.Encrypt(tbInput.Text.ToString().Trim(), Key);
             }
             else
             {

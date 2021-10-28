@@ -43,12 +43,14 @@ namespace ClientApp
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(62, 17);
             this.toolStripStatusLabel1.Text = "Trạng thái:";
             // 
             // lblOnlineStatusImage
             // 
+            this.lblOnlineStatusImage.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.lblOnlineStatusImage.Name = "lblOnlineStatusImage";
             this.lblOnlineStatusImage.Size = new System.Drawing.Size(118, 17);
             this.lblOnlineStatusImage.Text = "toolStripStatusLabel2";
@@ -56,7 +58,7 @@ namespace ClientApp
             // richTextBox1
             // 
             this.richTextBox1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.richTextBox1.Location = new System.Drawing.Point(127, 117);
+            this.richTextBox1.Location = new System.Drawing.Point(194, 114);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(541, 191);
             this.richTextBox1.TabIndex = 1;
@@ -65,7 +67,7 @@ namespace ClientApp
             // tbInput
             // 
             this.tbInput.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbInput.Location = new System.Drawing.Point(127, 340);
+            this.tbInput.Location = new System.Drawing.Point(194, 337);
             this.tbInput.Multiline = true;
             this.tbInput.Name = "tbInput";
             this.tbInput.Size = new System.Drawing.Size(541, 53);
@@ -78,7 +80,7 @@ namespace ClientApp
             this.btnSend.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(123)))), ((int)(((byte)(255)))));
             this.btnSend.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSend.ForeColor = System.Drawing.SystemColors.Control;
-            this.btnSend.Location = new System.Drawing.Point(127, 432);
+            this.btnSend.Location = new System.Drawing.Point(194, 429);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(541, 41);
             this.btnSend.TabIndex = 3;
@@ -89,7 +91,7 @@ namespace ClientApp
             // tbEncText
             // 
             this.tbEncText.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbEncText.Location = new System.Drawing.Point(127, 499);
+            this.tbEncText.Location = new System.Drawing.Point(194, 496);
             this.tbEncText.Multiline = true;
             this.tbEncText.Name = "tbEncText";
             this.tbEncText.Size = new System.Drawing.Size(541, 101);
@@ -101,7 +103,7 @@ namespace ClientApp
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(23, 531);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(75, 19);
+            this.labelControl1.Size = new System.Drawing.Size(121, 27);
             this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "Bản mã hóa:";
             // 
@@ -111,7 +113,7 @@ namespace ClientApp
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(23, 352);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(44, 19);
+            this.labelControl2.Size = new System.Drawing.Size(71, 27);
             this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "Bản rõ:";
             // 
@@ -121,10 +123,11 @@ namespace ClientApp
             this.cmbEncType.FormattingEnabled = true;
             this.cmbEncType.Items.AddRange(new object[] {
             "Mã hóa khóa đối xứng",
-            "Mã hóa khóa bất đối xứng"});
-            this.cmbEncType.Location = new System.Drawing.Point(127, 34);
+            "Mã hóa khóa bất đối xứng",
+            "Mã hóa DES"});
+            this.cmbEncType.Location = new System.Drawing.Point(194, 31);
             this.cmbEncType.Name = "cmbEncType";
-            this.cmbEncType.Size = new System.Drawing.Size(541, 27);
+            this.cmbEncType.Size = new System.Drawing.Size(541, 35);
             this.cmbEncType.TabIndex = 7;
             // 
             // labelControl3
@@ -133,15 +136,15 @@ namespace ClientApp
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(23, 33);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(78, 19);
+            this.labelControl3.Size = new System.Drawing.Size(126, 27);
             this.labelControl3.TabIndex = 8;
             this.labelControl3.Text = "Loại mã hóa:";
             // 
             // frmClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(699, 640);
+            this.ClientSize = new System.Drawing.Size(822, 640);
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.cmbEncType);
             this.Controls.Add(this.labelControl2);

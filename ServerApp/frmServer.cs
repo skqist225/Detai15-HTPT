@@ -27,7 +27,7 @@ namespace ServerApp
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
-
+        DES des = new DES();
         public frmServer()
         {
             InitializeComponent();
@@ -103,7 +103,16 @@ namespace ServerApp
                 } else if(msg.StartsWith("ASYMMETRIC"))
                 {
                     Asymmetric(msg, encoder, clientStream);
-                } else
+                }
+                else if (msg.StartsWith("DES"))
+                {
+                    String decryptedText = des.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
+                    WriteMessage(decryptedText);
+                    String key = des.GetEncodedRandomString(32);
+                    string encryptedText = des.Encrypt(decryptedText, key);
+                    Echo("DES" + ":" + encryptedText +  ":" + key, encoder, clientStream);
+                }
+                else
                 {
                     connectedClients--;
                     lblNumberOfConnections.Text = connectedClients.ToString();
