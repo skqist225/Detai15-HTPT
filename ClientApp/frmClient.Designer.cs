@@ -43,12 +43,14 @@ namespace ClientApp
             // 
             // toolStripStatusLabel1
             // 
+            this.toolStripStatusLabel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(62, 17);
             this.toolStripStatusLabel1.Text = "Trạng thái:";
             // 
             // lblOnlineStatusImage
             // 
+            this.lblOnlineStatusImage.Margin = new System.Windows.Forms.Padding(0, 3, 0, 2);
             this.lblOnlineStatusImage.Name = "lblOnlineStatusImage";
             this.lblOnlineStatusImage.Size = new System.Drawing.Size(118, 17);
             this.lblOnlineStatusImage.Text = "toolStripStatusLabel2";
@@ -101,7 +103,7 @@ namespace ClientApp
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(23, 531);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(75, 19);
+            this.labelControl1.Size = new System.Drawing.Size(98, 22);
             this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "Bản mã hóa:";
             // 
@@ -111,7 +113,7 @@ namespace ClientApp
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(23, 352);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(44, 19);
+            this.labelControl2.Size = new System.Drawing.Size(59, 22);
             this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "Bản rõ:";
             // 
@@ -121,10 +123,11 @@ namespace ClientApp
             this.cmbEncType.FormattingEnabled = true;
             this.cmbEncType.Items.AddRange(new object[] {
             "Mã hóa khóa đối xứng",
-            "Mã hóa khóa bất đối xứng"});
+            "Mã hóa khóa bất đối xứng",
+            "Mã hóa MD5"});
             this.cmbEncType.Location = new System.Drawing.Point(127, 34);
             this.cmbEncType.Name = "cmbEncType";
-            this.cmbEncType.Size = new System.Drawing.Size(541, 27);
+            this.cmbEncType.Size = new System.Drawing.Size(541, 30);
             this.cmbEncType.TabIndex = 7;
             // 
             // labelControl3
@@ -133,13 +136,13 @@ namespace ClientApp
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(23, 33);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(78, 19);
+            this.labelControl3.Size = new System.Drawing.Size(103, 22);
             this.labelControl3.TabIndex = 8;
             this.labelControl3.Text = "Loại mã hóa:";
             // 
             // frmClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(699, 640);
             this.Controls.Add(this.labelControl3);

@@ -24,7 +24,7 @@ namespace ClientApp
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
-
+        MD5 md5 = new MD5();
 
         public frmClient()
         {
@@ -85,9 +85,13 @@ namespace ClientApp
                 richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
                 return;
             }
-            else
+            else if (responseData.StartsWith("MD5"))
             {
+                string privateKey = responseData.Split(':')[2];
 
+                var decryptedText = md5.DecryptMD5(responseData.Split(':')[1], privateKey);
+                richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
+                return;
             }
 
             richTextBox1.AppendText(Environment.NewLine + "From Server: " + responseData);
@@ -107,9 +111,11 @@ namespace ClientApp
                 {
                     string privateKey = rsa.ToXmlString(true); // true to get the private key
                     SendMessage("ASYMMETRIC" + ":" + tbEncText.Text + ":" + privateKey);
-                } else
+                }
+                else if (encTypeTXT == "Mã hóa MD5")
                 {
-                    // More algorithm here
+                    string key = "A!9HHhi%XjjYY4YP2@Nob009X";
+                    SendMessage("MD5" + ":" + tbEncText.Text + ":" + key);
                 }
 
             } else
@@ -142,9 +148,10 @@ namespace ClientApp
                 string publicKey = rsa.ToXmlString(false); // false to get the public key
                 encryptedText = asymmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), publicKey);
             }
-            else
+            else if (encTypeTXT == "Mã hóa MD5")
             {
-                // More algorithm here
+                string key = "A!9HHhi%XjjYY4YP2@Nob009X";
+                encryptedText = md5.EncryptMD5(tbInput.Text.ToString().Trim(), key);
             }
 
             tbEncText.Text = encryptedText.Trim();

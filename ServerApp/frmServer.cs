@@ -27,6 +27,7 @@ namespace ServerApp
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
+        MD5 md5 = new MD5();
 
         public frmServer()
         {
@@ -103,6 +104,10 @@ namespace ServerApp
                 } else if(msg.StartsWith("ASYMMETRIC"))
                 {
                     Asymmetric(msg, encoder, clientStream);
+                }
+                else if (msg.StartsWith("MD5"))
+                {
+                    MD5(msg, encoder, clientStream);
                 } else
                 {
                     connectedClients--;
@@ -145,6 +150,23 @@ namespace ServerApp
             var encryptedText = asymmetricEncryptDecrypt.Encrypt(decryptedText, publicKey);
 
             Echo("ASYMMETRIC" + ":" + encryptedText + ":" + privateKeyToClient, encoder, clientStream);
+        }
+
+        private void MD5(string msg, ASCIIEncoding encoder, NetworkStream clientStream)
+        {
+            string key = msg.Split(':')[2];
+
+            var decryptedText = md5.DecryptMD5(msg.Split(':')[1], key);
+            WriteMessage(decryptedText);
+
+            // Now Echo the message back to client
+
+            //string privateKeyToClient = rsa.ToXmlString(true); // true to get the private key
+           // string publicKey = rsa.ToXmlString(false); // false to get the public key
+
+            var encryptedText = md5.EncryptMD5(decryptedText, key);
+
+            Echo("MD5" + ":" + encryptedText + ":" + key, encoder, clientStream);
         }
 
         private void WriteMessage(string msg)
