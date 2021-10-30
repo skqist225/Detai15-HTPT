@@ -28,6 +28,8 @@ namespace ServerApp
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
         DES des = new DES();
+        DES1 des1 = new DES1();
+
         public frmServer()
         {
             InitializeComponent();
@@ -111,6 +113,14 @@ namespace ServerApp
                     String key = des.GetEncodedRandomString(32);
                     string encryptedText = des.Encrypt(decryptedText, key);
                     Echo("DES" + ":" + encryptedText +  ":" + key, encoder, clientStream);
+                }
+                else if (msg.StartsWith("DES1"))
+                {
+                    String decryptedText = des1.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
+                    WriteMessage(decryptedText);
+                    String key = des1.GetEncodedRandomString(32);
+                    string encryptedText = des1.Encrypt(decryptedText, key);
+                    Echo("DES1" + ":" + encryptedText + ":" + key, encoder, clientStream);
                 }
                 else
                 {

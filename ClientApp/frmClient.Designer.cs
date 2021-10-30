@@ -103,7 +103,7 @@ namespace ClientApp
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(23, 531);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(121, 27);
+            this.labelControl1.Size = new System.Drawing.Size(98, 22);
             this.labelControl1.TabIndex = 5;
             this.labelControl1.Text = "Bản mã hóa:";
             // 
@@ -113,7 +113,7 @@ namespace ClientApp
             this.labelControl2.Appearance.Options.UseFont = true;
             this.labelControl2.Location = new System.Drawing.Point(23, 352);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(71, 27);
+            this.labelControl2.Size = new System.Drawing.Size(59, 22);
             this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "Bản rõ:";
             // 
@@ -124,10 +124,11 @@ namespace ClientApp
             this.cmbEncType.Items.AddRange(new object[] {
             "Mã hóa khóa đối xứng",
             "Mã hóa khóa bất đối xứng",
-            "Mã hóa DES"});
+            "Mã hóa DES",
+            "Mã hóa TripleDES"});
             this.cmbEncType.Location = new System.Drawing.Point(194, 31);
             this.cmbEncType.Name = "cmbEncType";
-            this.cmbEncType.Size = new System.Drawing.Size(541, 35);
+            this.cmbEncType.Size = new System.Drawing.Size(541, 30);
             this.cmbEncType.TabIndex = 7;
             // 
             // labelControl3
@@ -136,13 +137,13 @@ namespace ClientApp
             this.labelControl3.Appearance.Options.UseFont = true;
             this.labelControl3.Location = new System.Drawing.Point(23, 33);
             this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(126, 27);
+            this.labelControl3.Size = new System.Drawing.Size(103, 22);
             this.labelControl3.TabIndex = 8;
             this.labelControl3.Text = "Loại mã hóa:";
             // 
             // frmClient
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(822, 640);
             this.Controls.Add(this.labelControl3);

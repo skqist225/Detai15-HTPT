@@ -25,6 +25,7 @@ namespace ClientApp
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
         DES des = new DES();
+        DES1 des1 = new DES1();
 
         public frmClient()
         {
@@ -90,6 +91,12 @@ namespace ClientApp
                 richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
                 return;
             }
+            else if (responseData.StartsWith("DES1"))
+            {
+                String decryptedText = des1.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
+                richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
+                return;
+            }
             else
             {
 
@@ -112,9 +119,13 @@ namespace ClientApp
                 {
                     string privateKey = rsa.ToXmlString(true); // true to get the private key
                     SendMessage("ASYMMETRIC" + ":" + tbEncText.Text + ":" + privateKey);
-                } else if(encTypeTXT == "Mã hóa DES")
+                } else if(encTypeTXT == "Mã hóa TripleDES")
                 {
                     SendMessage("DES"+":"+ tbEncText.Text +":"+Key);
+                }
+                else if (encTypeTXT == "Mã hóa DES")
+                {
+                    SendMessage("DES1" + ":" + tbEncText.Text + ":" + Key);
                 }
 
             } else
@@ -147,10 +158,15 @@ namespace ClientApp
                 string publicKey = rsa.ToXmlString(false); // false to get the public key
                 encryptedText = asymmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), publicKey);
             }
-            else if(encTypeTXT == "Mã hóa DES")
+            else if(encTypeTXT == "Mã hóa TripleDES")
             {
                 Key = des.GetEncodedRandomString(32);
                 encryptedText = des.Encrypt(tbInput.Text.ToString().Trim(), Key);
+            }
+            else if (encTypeTXT == "Mã hóa DES")
+            {
+                Key = des1.GetEncodedRandomString(32);
+                encryptedText = des1.Encrypt(tbInput.Text.ToString().Trim(), Key);
             }
             else
             {

@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DES.cs" />
     <Compile Include="AsymmetricEncryptDecrypt.cs" />
+    <Compile Include="DES1.cs" />
     <Compile Include="DigitalSignatures.cs" />
     <Compile Include="EncryptedDto.cs" />
     <Compile Include="frmClient.cs">
