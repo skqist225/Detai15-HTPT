@@ -32,3 +32,36 @@ C:\Users\TruongLuan\Desktop\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.csproj.Co
 C:\Users\TruongLuan\Desktop\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.csproj.CopyComplete
 C:\Users\TruongLuan\Desktop\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.exe
 C:\Users\TruongLuan\Desktop\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.pdb
+D:\HTPT\New folder\ServerApp\bin\Debug\ServerApp.exe.config
+D:\HTPT\New folder\ServerApp\bin\Debug\ServerApp.exe
+D:\HTPT\New folder\ServerApp\bin\Debug\ServerApp.pdb
+D:\HTPT\New folder\ServerApp\bin\Debug\DevExpress.Data.v19.2.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\DevExpress.Xpo.v19.2.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\DevExpress.Data.v19.2.xml
+D:\HTPT\New folder\ServerApp\bin\Debug\DevExpress.Xpo.v19.2.xml
+D:\HTPT\New folder\ServerApp\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+D:\HTPT\New folder\ServerApp\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
+D:\HTPT\New folder\ServerApp\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\HTPT\New folder\ServerApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\HTPT\New folder\ServerApp\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\HTPT\New folder\ServerApp\bin\Debug\de\DevExpress.Data.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\es\DevExpress.Data.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\ja\DevExpress.Data.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\ru\DevExpress.Data.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\de\DevExpress.Xpo.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\es\DevExpress.Xpo.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\ja\DevExpress.Xpo.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\bin\Debug\ru\DevExpress.Xpo.v19.2.resources.dll
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.csproj.AssemblyReference.cache
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.frmServer.resources
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.Properties.Resources.resources
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.csproj.GenerateResource.cache
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.csproj.CoreCompileInputs.cache
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.csproj.CopyComplete
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.exe
+D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.pdb
