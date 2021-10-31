@@ -106,21 +106,21 @@ namespace ServerApp
                 {
                     Asymmetric(msg, encoder, clientStream);
                 }
-                else if (msg.StartsWith("DES"))
+                else if (msg.StartsWith("TripleDES"))
                 {
                     String decryptedText = des.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
                     WriteMessage(decryptedText);
                     String key = des.GetEncodedRandomString(32);
                     string encryptedText = des.Encrypt(decryptedText, key);
-                    Echo("DES" + ":" + encryptedText +  ":" + key, encoder, clientStream);
+                    Echo("TripleDES" + ":" + encryptedText +  ":" + key, encoder, clientStream);
                 }
-                else if (msg.StartsWith("DES1"))
+                else if (msg.StartsWith("DES"))
                 {
                     String decryptedText = des1.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
                     WriteMessage(decryptedText);
-                    String key = des1.GetEncodedRandomString(32);
+                    String key = "password";
                     string encryptedText = des1.Encrypt(decryptedText, key);
-                    Echo("DES1" + ":" + encryptedText + ":" + key, encoder, clientStream);
+                    Echo("DES" + ":" + encryptedText + ":" + key, encoder, clientStream);
                 }
                 else
                 {

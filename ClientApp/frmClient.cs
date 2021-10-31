@@ -85,13 +85,13 @@ namespace ClientApp
                 var decryptedText = asymmetricEncryptDecrypt.Decrypt(responseData.Split(':')[1], privateKey);
                 richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
                 return;
-            }else if (responseData.StartsWith("DES"))
+            }else if (responseData.StartsWith("TripleDES"))
             {
                 String decryptedText = des.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
                 richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
                 return;
             }
-            else if (responseData.StartsWith("DES1"))
+            else if (responseData.StartsWith("DES"))
             {
                 String decryptedText = des1.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
                 richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
@@ -121,11 +121,11 @@ namespace ClientApp
                     SendMessage("ASYMMETRIC" + ":" + tbEncText.Text + ":" + privateKey);
                 } else if(encTypeTXT == "Mã hóa TripleDES")
                 {
-                    SendMessage("DES"+":"+ tbEncText.Text +":"+Key);
+                    SendMessage("TripleDES" + ":"+ tbEncText.Text +":"+Key);
                 }
                 else if (encTypeTXT == "Mã hóa DES")
                 {
-                    SendMessage("DES1" + ":" + tbEncText.Text + ":" + Key);
+                    SendMessage("DES" + ":" + tbEncText.Text + ":" + Key);
                 }
 
             } else
@@ -165,7 +165,7 @@ namespace ClientApp
             }
             else if (encTypeTXT == "Mã hóa DES")
             {
-                Key = des1.GetEncodedRandomString(32);
+                Key = "passwor1";
                 encryptedText = des1.Encrypt(tbInput.Text.ToString().Trim(), Key);
             }
             else
