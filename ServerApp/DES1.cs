@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -9,39 +10,67 @@ namespace ServerApp
 {
     class DES1
     {
-        public string Encrypt(string source, string key)
+
+
+        public string Encrypt(string message, string password)
         {
-            TripleDESCryptoServiceProvider desCryptoProvider = new TripleDESCryptoServiceProvider();
-            MD5CryptoServiceProvider hashMD5Provider = new MD5CryptoServiceProvider();
+            // Encode message and password
+            byte[] messageBytes = ASCIIEncoding.ASCII.GetBytes(message);
+            byte[] passwordBytes = ASCIIEncoding.ASCII.GetBytes(password);
 
-            byte[] byteHash;
-            byte[] byteBuff;
+            // Set encryption settings -- Use password for both key and init. vector
+            DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
+            ICryptoTransform transform = provider.CreateEncryptor(passwordBytes, passwordBytes);
+            CryptoStreamMode mode = CryptoStreamMode.Write;
 
-            byteHash = hashMD5Provider.ComputeHash(Encoding.UTF8.GetBytes(key));
-            desCryptoProvider.Key = byteHash;
-            desCryptoProvider.Mode = CipherMode.ECB; //CBC, CFB
-            byteBuff = Encoding.UTF8.GetBytes(source);
+            // Set up streams and encrypt
+            MemoryStream memStream = new MemoryStream();
+            CryptoStream cryptoStream = new CryptoStream(memStream, transform, mode);
+            cryptoStream.Write(messageBytes, 0, messageBytes.Length);
+            cryptoStream.FlushFinalBlock();
 
-            string encoded =
-                Convert.ToBase64String(desCryptoProvider.CreateEncryptor().TransformFinalBlock(byteBuff, 0, byteBuff.Length));
-            return encoded;
+            // Read the encrypted message from the memory stream
+            byte[] encryptedMessageBytes = new byte[memStream.Length];
+            memStream.Position = 0;
+            memStream.Read(encryptedMessageBytes, 0, encryptedMessageBytes.Length);
+
+            // Encode the encrypted message as base64 string
+            string encryptedMessage = Convert.ToBase64String(encryptedMessageBytes);
+
+            return encryptedMessage;
         }
-        public string Decrypt(string encodedText, string key)
+
+
+
+        public string Decrypt(string encryptedMessage, string password)
         {
-            TripleDESCryptoServiceProvider desCryptoProvider = new TripleDESCryptoServiceProvider();
-            MD5CryptoServiceProvider hashMD5Provider = new MD5CryptoServiceProvider();
+            // Convert encrypted message and password to bytes
+            byte[] encryptedMessageBytes = Convert.FromBase64String(encryptedMessage);
+            byte[] passwordBytes = ASCIIEncoding.ASCII.GetBytes(password);
 
-            byte[] byteHash;
-            byte[] byteBuff;
+            // Set encryption settings -- Use password for both key and init. vector
+            DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
+            ICryptoTransform transform = provider.CreateDecryptor(passwordBytes, passwordBytes);
+            CryptoStreamMode mode = CryptoStreamMode.Write;
 
-            byteHash = hashMD5Provider.ComputeHash(Encoding.UTF8.GetBytes(key));
-            desCryptoProvider.Key = byteHash;
-            desCryptoProvider.Mode = CipherMode.ECB; //CBC, CFB
-            byteBuff = Convert.FromBase64String(encodedText);
+            // Set up streams and decrypt
+            MemoryStream memStream = new MemoryStream();
+            CryptoStream cryptoStream = new CryptoStream(memStream, transform, mode);
+            cryptoStream.Write(encryptedMessageBytes, 0, encryptedMessageBytes.Length);
+            cryptoStream.FlushFinalBlock();
 
-            string plaintext = Encoding.UTF8.GetString(desCryptoProvider.CreateDecryptor().TransformFinalBlock(byteBuff, 0, byteBuff.Length));
-            return plaintext;
+            // Read decrypted message from memory stream
+            byte[] decryptedMessageBytes = new byte[memStream.Length];
+            memStream.Position = 0;
+            memStream.Read(decryptedMessageBytes, 0, decryptedMessageBytes.Length);
+
+            // Encode deencrypted binary data to base64 string
+            string message = ASCIIEncoding.ASCII.GetString(decryptedMessageBytes);
+
+            return message;
         }
+
+
         public string GetEncodedRandomString(int length)
         {
             var byteArray = new byte[length];

@@ -62,6 +62,5 @@ D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.frmServer.resources
 D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.Properties.Resources.resources
 D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.csproj.GenerateResource.cache
 D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.csproj.CoreCompileInputs.cache
-D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.csproj.CopyComplete
 D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.exe
 D:\HTPT\New folder\ServerApp\obj\Debug\ServerApp.pdb
