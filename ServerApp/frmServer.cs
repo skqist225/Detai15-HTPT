@@ -29,6 +29,7 @@ namespace ServerApp
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
         DES des = new DES();
         DES1 des1 = new DES1();
+        Dictionary<TcpClient, int> clients = new Dictionary<TcpClient, int>();
 
         public frmServer()
         {
@@ -56,6 +57,8 @@ namespace ServerApp
                 //with connected client
                 connectedClients++; // Increment the number of clients that have communicated with us.
                 lblNumberOfConnections.Text = connectedClients.ToString();
+                this.rtbClientConnect.AppendText("Client " + connectedClients + " đã kết nối đến server ✅" + Environment.NewLine);
+                clients.Add(client, connectedClients);
 
                 Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
                 clientThread.Start(client);
@@ -98,51 +101,52 @@ namespace ServerApp
 
                 // Convert the Bytes received to a string and display it on the Server Screen
                 string msg = encoder.GetString(message, 0, bytesRead);
+                int clientNumber = 0;
+                clients.TryGetValue((TcpClient)client, out clientNumber);
 
-                if(msg.StartsWith("SYMMETRIC"))
+                if (msg.StartsWith("SYMMETRIC"))
                 {
-                    Symmetric(msg, encoder, clientStream);
+                    Symmetric(msg, encoder, clientStream, clientNumber);
                 }
 
                 if(msg.StartsWith("ASYMMETRIC"))
                 {
-                    Asymmetric(msg, encoder, clientStream);
+                    Asymmetric(msg, encoder, clientStream, clientNumber);
                 }
 
                 if (msg.StartsWith("TripleDES"))
                 {
-                    String decryptedText = des.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
-                    WriteMessage(decryptedText);
-                    String key = des.GetEncodedRandomString(32);
-                    string encryptedText = des.Encrypt(decryptedText, key);
-                    Echo("TripleDES" + ":" + encryptedText +  ":" + key, encoder, clientStream);
+                    TripleDes(msg, encoder, clientStream, clientNumber);
                 }
 
                 if (msg.StartsWith("DES"))
                 {
-                    String decryptedText = des1.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
-                    WriteMessage(decryptedText);
-                    String key = "password";
-                    string encryptedText = des1.Encrypt(decryptedText, key);
-                    Echo("DES" + ":" + encryptedText + ":" + key, encoder, clientStream);
+                    Des(msg, encoder, clientStream, clientNumber);
                 }
 
                 if(msg.Equals("CLOSING"))
                 {
+                    this.rtbClientConnect.AppendText("Client " + connectedClients + " đã ngắt kết nối đến server ❌" + Environment.NewLine);
                     connectedClients--;
                     lblNumberOfConnections.Text = connectedClients.ToString();
                     tcpClient.Close();
+                }
+
+                if(msg.Equals("GET_CLIENT_NUMBER"))
+                {
+                    Echo("CLIENT_NUMBER:" + connectedClients, encoder, clientStream);
                 }
             }
 
             tcpClient.Close();
         }
 
-        private void Symmetric(string msg, ASCIIEncoding encoder, NetworkStream clientStream)
+        private void Symmetric(string msg, ASCIIEncoding encoder, NetworkStream clientStream, int clientNumber)
         {
 
             var decryptedText = symmetricEncryptDecrypt.Decrypt(msg.Split(':')[1], msg.Split(':')[2], msg.Split(':')[3]);
-            WriteMessage(decryptedText);
+            WriteMessage("Client" + clientNumber + ": " + decryptedText);
+            this.rtbClientConnect.AppendText("Client" + clientNumber + "đã gửi 1 tin nhắn có nội dung \"" + decryptedText + "\" được mã hóa bởi AES" + Environment.NewLine);
 
             // Now Echo the message back to client
 
@@ -152,12 +156,13 @@ namespace ServerApp
             Echo("SYMMETRIC" + ":" + encryptedText + ":" + IVBase64 + ":" + Key, encoder, clientStream);
         }
 
-        private void Asymmetric(string msg, ASCIIEncoding encoder, NetworkStream clientStream)
+        private void Asymmetric(string msg, ASCIIEncoding encoder, NetworkStream clientStream, int clientNumber)
         {
             string privateKey = msg.Split(':')[2];
 
             var decryptedText = asymmetricEncryptDecrypt.Decrypt(msg.Split(':')[1], privateKey);
-            WriteMessage(decryptedText);
+            WriteMessage("Client" + clientNumber + ": " + decryptedText);
+            this.rtbClientConnect.AppendText("Client" + clientNumber + "đã gửi 1 tin nhắn có nội dung \"" + decryptedText + "\" được mã hóa bởi RSA" + Environment.NewLine);
 
             // Now Echo the message back to client
 
@@ -167,6 +172,27 @@ namespace ServerApp
             var encryptedText = asymmetricEncryptDecrypt.Encrypt(decryptedText, publicKey);
 
             Echo("ASYMMETRIC" + ":" + encryptedText + ":" + privateKeyToClient, encoder, clientStream);
+        }
+
+        private void Des(string msg, ASCIIEncoding encoder, NetworkStream clientStream, int clientNumber)
+        {
+            String decryptedText = des1.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
+            WriteMessage("Client" + clientNumber + ": " + decryptedText);
+            this.rtbClientConnect.AppendText("Client" + clientNumber + "đã gửi 1 tin nhắn có nội dung \"" + decryptedText + "\" được mã hóa bởi DES" + Environment.NewLine);
+            
+            String key = "password";
+            string encryptedText = des1.Encrypt(decryptedText, key);
+            Echo("DES" + ":" + encryptedText + ":" + key, encoder, clientStream);
+        }
+
+        private void TripleDes(string msg, ASCIIEncoding encoder, NetworkStream clientStream, int clientNumber)
+        {
+            String decryptedText = des.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
+            WriteMessage("Client" + clientNumber + ": " + decryptedText);
+            this.rtbClientConnect.AppendText("Client" + clientNumber + "đã gửi 1 tin nhắn có nội dung \"" + decryptedText + "\" được mã hóa bởi 3DES" + Environment.NewLine);
+            String key = des.GetEncodedRandomString(32);
+            string encryptedText = des.Encrypt(decryptedText, key);
+            Echo("TripleDES" + ":" + encryptedText + ":" + key, encoder, clientStream);
         }
 
         private void WriteMessage(string msg)
@@ -201,6 +227,16 @@ namespace ServerApp
 
             clientStream.Write(buffer, 0, buffer.Length);
             clientStream.Flush();
+        }
+
+        private void frmServer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            this.tcpListener.Stop();
+        }
+
+        private void frmServer_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

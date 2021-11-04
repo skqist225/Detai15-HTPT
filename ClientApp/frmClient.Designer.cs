@@ -128,6 +128,7 @@ namespace ClientApp
             this.cmbEncType.Name = "cmbEncType";
             this.cmbEncType.Size = new System.Drawing.Size(541, 27);
             this.cmbEncType.TabIndex = 7;
+            this.cmbEncType.SelectedIndexChanged += new System.EventHandler(this.cmbEncType_SelectedIndexChanged);
             // 
             // labelControl3
             // 
@@ -154,7 +155,7 @@ namespace ClientApp
             this.Controls.Add(this.richTextBox1);
             this.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmClient";
-            this.Text = "Form1";
+            this.Text = "Client";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmClient_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmClient_FormClosed);
             this.Load += new System.EventHandler(this.frmClient_Load);

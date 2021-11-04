@@ -94,3 +94,7 @@ C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.csproj
 C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.csproj.CoreCompileInputs.cache
 C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.exe
 C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.pdb
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\bin\Debug\ServerApp.exe.manifest
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\bin\Debug\ServerApp.application
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.exe.manifest
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ServerApp\obj\Debug\ServerApp.application
