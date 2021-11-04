@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ClientApp
 {
-    class DES
+    class TripleDES
     {
         public string Encrypt(string source, string key)
         {

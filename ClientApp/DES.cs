@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ClientApp
 {
-    class DES1
+    class DES
     {
 
         public string Encrypt(string message, string password)

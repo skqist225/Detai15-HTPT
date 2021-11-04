@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ServerApp
 {
-    class DES1
+    class DES
     {
 
 

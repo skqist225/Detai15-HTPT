@@ -27,8 +27,8 @@ namespace ServerApp
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
-        DES des = new DES();
-        DES1 des1 = new DES1();
+        TripleDES des = new TripleDES();
+        DES des1 = new DES();
         Dictionary<TcpClient, int> clients = new Dictionary<TcpClient, int>();
 
         public frmServer()
@@ -39,7 +39,7 @@ namespace ServerApp
 
         private void Server()
         {
-            this.tcpListener = new TcpListener(IPAddress.Any, 3000); // Change to IPAddress.Any for internet wide Communication
+            this.tcpListener = new TcpListener(IPAddress.Any, 4567); // Change to IPAddress.Any for internet wide Communication
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
         }

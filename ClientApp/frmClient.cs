@@ -17,7 +17,7 @@ namespace ClientApp
     public partial class frmClient : Form
     {
         private TcpClient client = new TcpClient();
-        private IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3000);
+        private IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 4567);
         private string Key = "";
         private string desKey = "";
         private string tripledesKey = "";
@@ -27,7 +27,7 @@ namespace ClientApp
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
         TripleDES des = new TripleDES();
-        DES1 des1 = new DES1();
+        DES des1 = new DES();
 
 
 
