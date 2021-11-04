@@ -56,9 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DES.cs" />
+    <Compile Include="TripleDES.cs" />
     <Compile Include="AsymmetricEncryptDecrypt.cs" />
-    <Compile Include="DES1.cs" />
+    <Compile Include="DES.cs" />
     <Compile Include="EncryptedDto.cs" />
     <Compile Include="frmClient.cs">
       <SubType>Form</SubType>

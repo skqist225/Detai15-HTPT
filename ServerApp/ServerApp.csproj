@@ -79,8 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AsymmetricEncryptDecrypt.cs" />
+    <Compile Include="TripleDES.cs" />
     <Compile Include="DES.cs" />
-    <Compile Include="DES1.cs" />
     <Compile Include="EncryptedDto.cs" />
     <Compile Include="frmServer.cs">
       <SubType>Form</SubType>

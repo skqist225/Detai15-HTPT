@@ -14,8 +14,8 @@ namespace ClientApp
         public string Encrypt(string message, string password)
         {
             // Encode message and password
-            byte[] messageBytes = ASCIIEncoding.ASCII.GetBytes(message);
-            byte[] passwordBytes = ASCIIEncoding.ASCII.GetBytes(password);
+            byte[] messageBytes = ASCIIEncoding.UTF8.GetBytes(message);
+            byte[] passwordBytes = ASCIIEncoding.UTF8.GetBytes(password);
 
             // Set encryption settings -- Use password for both key and init. vector
             DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
@@ -45,7 +45,7 @@ namespace ClientApp
         {
             // Convert encrypted message and password to bytes
             byte[] encryptedMessageBytes = Convert.FromBase64String(encryptedMessage);
-            byte[] passwordBytes = ASCIIEncoding.ASCII.GetBytes(password);
+            byte[] passwordBytes = ASCIIEncoding.UTF8.GetBytes(password);
 
             // Set encryption settings -- Use password for both key and init. vector
             DESCryptoServiceProvider provider = new DESCryptoServiceProvider();
@@ -64,7 +64,7 @@ namespace ClientApp
             memStream.Read(decryptedMessageBytes, 0, decryptedMessageBytes.Length);
 
             // Encode deencrypted binary data to base64 string
-            string message = ASCIIEncoding.ASCII.GetString(decryptedMessageBytes);
+            string message = ASCIIEncoding.UTF8.GetString(decryptedMessageBytes);
 
             return message;
         }
