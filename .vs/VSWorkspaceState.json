@@ -4,6 +4,6 @@
     "\\ClientApp",
     "\\ServerApp"
   ],
-  "SelectedNode": "\\ServerApp\\SymmetricEncryptDecrypt.cs",
+  "SelectedNode": "\\ClientApp\\frmClient.cs",
   "PreviewInSolutionExplorer": false
 }

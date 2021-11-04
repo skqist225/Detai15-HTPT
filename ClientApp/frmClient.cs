@@ -29,6 +29,8 @@ namespace ClientApp
         DES des = new DES();
         DES1 des1 = new DES1();
 
+
+
         public frmClient()
         {
             InitializeComponent();
@@ -37,13 +39,15 @@ namespace ClientApp
                 client.Connect(serverEndPoint);
                 isConnectionEstablished = true;
                 this.cmbEncType.SelectedIndex = 0;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 try
                 {
                     isConnectionEstablished = false;
                     MessageBox.Show("Không thể kết nối kết tới server!");
-                } finally
+                }
+                finally
                 {
                     //this.Dispose();
                     //Application.Exit();
@@ -53,6 +57,11 @@ namespace ClientApp
 
         private void SendMessage(string msg)
         {
+            if (!isConnectionEstablished)
+            {
+                return;
+            }
+
             NetworkStream clientStream = client.GetStream();
 
             ASCIIEncoding encoder = new ASCIIEncoding();
@@ -73,38 +82,29 @@ namespace ClientApp
             Int32 bytes = clientStream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
 
+            var decryptedText = "";
 
             if (responseData.StartsWith("SYMMETRIC"))
             {
-                var decryptedText = symmetricEncryptDecrypt.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2], responseData.Split(':')[3]);
-                richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
-                return;
+                decryptedText = symmetricEncryptDecrypt.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2], responseData.Split(':')[3]);
             }
-            else if (responseData.StartsWith("ASYMMETRIC"))
+            if (responseData.StartsWith("ASYMMETRIC"))
             {
+
                 string privateKey = responseData.Split(':')[2];
-
-                var decryptedText = asymmetricEncryptDecrypt.Decrypt(responseData.Split(':')[1], privateKey);
-                richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
-                return;
-            }else if (responseData.StartsWith("TripleDES"))
-            {
-                String decryptedText = des.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
-                richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
-                return;
-            }
-            else if (responseData.StartsWith("DES"))
-            {
-                String decryptedText = des1.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
-                richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
-                return;
-            }
-            else
-            {
+                decryptedText = asymmetricEncryptDecrypt.Decrypt(responseData.Split(':')[1], privateKey);
 
             }
+            if (responseData.StartsWith("TripleDES"))
+            {
+                decryptedText = des.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
+            }
+            if (responseData.StartsWith("DES"))
+            {
+                decryptedText = des1.Decrypt(responseData.Split(':')[1], responseData.Split(':')[2]);
+            }
 
-            richTextBox1.AppendText(Environment.NewLine + "From Server: " + responseData);
+            richTextBox1.AppendText(Environment.NewLine + "From Server: " + decryptedText);
         }
 
         private void btnSend_Click(object sender, EventArgs e)
@@ -114,33 +114,36 @@ namespace ClientApp
 
                 string encTypeTXT = this.cmbEncType.Text.Trim();
 
-                if(encTypeTXT == "Mã hóa AES")
+                if (encTypeTXT == "Mã hóa AES")
                 {
                     SendMessage("SYMMETRIC" + ":" + tbEncText.Text + ":" + IVBase64 + ":" + Key);
-                } else if(encTypeTXT == "Mã hóa RSA")
+                }
+                else if (encTypeTXT == "Mã hóa RSA")
                 {
                     string privateKey = rsa.ToXmlString(true); // true to get the private key
                     SendMessage("ASYMMETRIC" + ":" + tbEncText.Text + ":" + privateKey);
-                } else if(encTypeTXT == "Mã hóa 3DES")
+                }
+                else if (encTypeTXT == "Mã hóa 3DES")
                 {
-                    SendMessage("TripleDES" + ":"+ tbEncText.Text +":"+tripledesKey);
+                    SendMessage("TripleDES" + ":" + tbEncText.Text + ":" + tripledesKey);
                 }
                 else if (encTypeTXT == "Mã hóa DES")
                 {
                     SendMessage("DES" + ":" + tbEncText.Text + ":" + desKey);
                 }
 
-            } else
+            }
+            else
             {
                 MessageBox.Show("Không thể kết nối tới server!");
             }
 
-            
+
         }
 
         private void tbInput_KeyPress(object sender, KeyPressEventArgs e)
         {
-           
+
         }
 
         private void tbInput_KeyUp(object sender, KeyEventArgs e)
@@ -153,7 +156,7 @@ namespace ClientApp
             {
                 (Key, IVBase64) = symmetricEncryptDecrypt.InitSymmetricEncryptionKeyIV();
 
-                 encryptedText = symmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), IVBase64, Key);
+                encryptedText = symmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), IVBase64, Key);
             }
 
             if (encTypeTXT == "Mã hóa RSA")
@@ -162,7 +165,7 @@ namespace ClientApp
                 encryptedText = asymmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), publicKey);
             }
 
-            if(encTypeTXT == "Mã hóa 3DES")
+            if (encTypeTXT == "Mã hóa 3DES")
             {
                 tripledesKey = des.GetEncodedRandomString(32);
                 encryptedText = des.Encrypt(tbInput.Text.ToString().Trim(), tripledesKey);
@@ -203,6 +206,12 @@ namespace ClientApp
             {
                 return;
             }
+        }
+
+        private void cmbEncType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            tbEncText.Text = "";
+            tbInput.Text = "";
         }
     }
 

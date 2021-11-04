@@ -33,6 +33,7 @@ namespace ServerApp
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblNumberOfConnections = new System.Windows.Forms.ToolStripStatusLabel();
             this.rtbServer = new System.Windows.Forms.RichTextBox();
+            this.rtbClientConnect = new System.Windows.Forms.RichTextBox();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,19 +62,29 @@ namespace ServerApp
             // 
             // rtbServer
             // 
-            this.rtbServer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbServer.Dock = System.Windows.Forms.DockStyle.Top;
             this.rtbServer.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rtbServer.Location = new System.Drawing.Point(0, 0);
             this.rtbServer.Name = "rtbServer";
-            this.rtbServer.Size = new System.Drawing.Size(800, 428);
+            this.rtbServer.Size = new System.Drawing.Size(800, 204);
             this.rtbServer.TabIndex = 1;
             this.rtbServer.Text = "";
+            // 
+            // rtbClientConnect
+            // 
+            this.rtbClientConnect.Dock = System.Windows.Forms.DockStyle.Top;
+            this.rtbClientConnect.Location = new System.Drawing.Point(0, 204);
+            this.rtbClientConnect.Name = "rtbClientConnect";
+            this.rtbClientConnect.Size = new System.Drawing.Size(800, 221);
+            this.rtbClientConnect.TabIndex = 2;
+            this.rtbClientConnect.Text = "";
             // 
             // frmServer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rtbClientConnect);
             this.Controls.Add(this.rtbServer);
             this.Controls.Add(this.statusStrip1);
             this.Name = "frmServer";
@@ -91,6 +102,7 @@ namespace ServerApp
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel lblNumberOfConnections;
         private System.Windows.Forms.RichTextBox rtbServer;
+        private System.Windows.Forms.RichTextBox rtbClientConnect;
     }
 }
 
