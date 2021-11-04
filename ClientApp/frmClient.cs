@@ -26,7 +26,7 @@ namespace ClientApp
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
         SymmetricEncryptDecrypt symmetricEncryptDecrypt = new SymmetricEncryptDecrypt();
         AsymmetricEncryptDecrypt asymmetricEncryptDecrypt = new AsymmetricEncryptDecrypt();
-        DES des = new DES();
+        TripleDES des = new TripleDES();
         DES1 des1 = new DES1();
 
 
