@@ -19,6 +19,8 @@ namespace ClientApp
         private TcpClient client = new TcpClient();
         private IPEndPoint serverEndPoint = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 3000);
         private string Key = "";
+        private string desKey = "";
+        private string tripledesKey = "";
         private string IVBase64 = "";
         private bool isConnectionEstablished = false;
         RSACryptoServiceProvider rsa = new RSACryptoServiceProvider();
@@ -112,20 +114,20 @@ namespace ClientApp
 
                 string encTypeTXT = this.cmbEncType.Text.Trim();
 
-                if(encTypeTXT == "Mã hóa khóa đối xứng")
+                if(encTypeTXT == "Mã hóa AES")
                 {
                     SendMessage("SYMMETRIC" + ":" + tbEncText.Text + ":" + IVBase64 + ":" + Key);
-                } else if(encTypeTXT == "Mã hóa khóa bất đối xứng")
+                } else if(encTypeTXT == "Mã hóa RSA")
                 {
                     string privateKey = rsa.ToXmlString(true); // true to get the private key
                     SendMessage("ASYMMETRIC" + ":" + tbEncText.Text + ":" + privateKey);
-                } else if(encTypeTXT == "Mã hóa TripleDES")
+                } else if(encTypeTXT == "Mã hóa 3DES")
                 {
-                    SendMessage("TripleDES" + ":"+ tbEncText.Text +":"+Key);
+                    SendMessage("TripleDES" + ":"+ tbEncText.Text +":"+tripledesKey);
                 }
                 else if (encTypeTXT == "Mã hóa DES")
                 {
-                    SendMessage("DES" + ":" + tbEncText.Text + ":" + Key);
+                    SendMessage("DES" + ":" + tbEncText.Text + ":" + desKey);
                 }
 
             } else
@@ -147,30 +149,29 @@ namespace ClientApp
             var encryptedText = "";
             string encTypeTXT = this.cmbEncType.Text.Trim();
 
-            if (encTypeTXT == "Mã hóa khóa đối xứng")
+            if (encTypeTXT == "Mã hóa AES")
             {
                 (Key, IVBase64) = symmetricEncryptDecrypt.InitSymmetricEncryptionKeyIV();
 
                  encryptedText = symmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), IVBase64, Key);
             }
-            else if (encTypeTXT == "Mã hóa khóa bất đối xứng")
+
+            if (encTypeTXT == "Mã hóa RSA")
             {
                 string publicKey = rsa.ToXmlString(false); // false to get the public key
                 encryptedText = asymmetricEncryptDecrypt.Encrypt(tbInput.Text.ToString().Trim(), publicKey);
             }
-            else if(encTypeTXT == "Mã hóa TripleDES")
+
+            if(encTypeTXT == "Mã hóa 3DES")
             {
-                Key = des.GetEncodedRandomString(32);
-                encryptedText = des.Encrypt(tbInput.Text.ToString().Trim(), Key);
+                tripledesKey = des.GetEncodedRandomString(32);
+                encryptedText = des.Encrypt(tbInput.Text.ToString().Trim(), tripledesKey);
             }
-            else if (encTypeTXT == "Mã hóa DES")
+
+            if (encTypeTXT == "Mã hóa DES")
             {
-                Key = "passwor1";
-                encryptedText = des1.Encrypt(tbInput.Text.ToString().Trim(), Key);
-            }
-            else
-            {
-                // More algorithm here
+                desKey = "passwor1";
+                encryptedText = des1.Encrypt(tbInput.Text.ToString().Trim(), desKey);
             }
 
             tbEncText.Text = encryptedText.Trim();

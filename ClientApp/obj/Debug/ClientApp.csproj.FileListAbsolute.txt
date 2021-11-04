@@ -93,3 +93,45 @@ D:\HTPT\New folder\ClientApp\obj\Debug\ClientApp.exe.licenses
 D:\HTPT\New folder\ClientApp\obj\Debug\ClientApp.csproj.CoreCompileInputs.cache
 D:\HTPT\New folder\ClientApp\obj\Debug\ClientApp.exe
 D:\HTPT\New folder\ClientApp\obj\Debug\ClientApp.pdb
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ClientApp.exe.config
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ClientApp.exe
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ClientApp.pdb
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\DevExpress.Pdf.v19.2.Core.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\DevExpress.Data.v19.2.xml
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\DevExpress.Printing.v19.2.Core.xml
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\DevExpress.Sparkline.v19.2.Core.xml
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\DevExpress.Utils.v19.2.xml
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\DevExpress.XtraEditors.v19.2.xml
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\DevExpress.Pdf.v19.2.Core.xml
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\de\DevExpress.Data.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\es\DevExpress.Data.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ja\DevExpress.Data.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ru\DevExpress.Data.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\de\DevExpress.Printing.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\es\DevExpress.Printing.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ja\DevExpress.Printing.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ru\DevExpress.Printing.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\de\DevExpress.Sparkline.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\es\DevExpress.Sparkline.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ja\DevExpress.Sparkline.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ru\DevExpress.Sparkline.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\de\DevExpress.Utils.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\es\DevExpress.Utils.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ja\DevExpress.Utils.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ru\DevExpress.Utils.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\de\DevExpress.XtraEditors.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\es\DevExpress.XtraEditors.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ja\DevExpress.XtraEditors.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ru\DevExpress.XtraEditors.v19.2.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\de\DevExpress.Pdf.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\es\DevExpress.Pdf.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ja\DevExpress.Pdf.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\bin\Debug\ru\DevExpress.Pdf.v19.2.Core.resources.dll
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.csproj.AssemblyReference.cache
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.frmClient.resources
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.Properties.Resources.resources
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.csproj.GenerateResource.cache
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.exe.licenses
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.csproj.CoreCompileInputs.cache
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.exe
+C:\Users\thuan\Desktop\Project\Detai15-HTPT\ClientApp\obj\Debug\ClientApp.pdb

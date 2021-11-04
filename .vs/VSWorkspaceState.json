@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ClientApp"
+    "\\ClientApp",
+    "\\ServerApp"
   ],
-  "SelectedNode": "\\ECAndDCOverTCPNetwork.sln",
+  "SelectedNode": "\\ServerApp\\SymmetricEncryptDecrypt.cs",
   "PreviewInSolutionExplorer": false
 }

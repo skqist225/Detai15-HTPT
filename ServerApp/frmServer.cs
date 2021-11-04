@@ -85,13 +85,13 @@ namespace ServerApp
                     break;
                 }
 
-                if (bytesRead == 0)
-                {
-                    //the client has disconnected from the server
-                    connectedClients--;
-                    lblNumberOfConnections.Text = connectedClients.ToString();
-                    break;
-                }
+                //if (bytesRead == 0)
+                //{
+                //    //the client has disconnected from the server
+                //    connectedClients--;
+                //    lblNumberOfConnections.Text = connectedClients.ToString();
+                //    break;
+                //}
 
                 //message has successfully been received
                 ASCIIEncoding encoder = new ASCIIEncoding();
@@ -102,11 +102,14 @@ namespace ServerApp
                 if(msg.StartsWith("SYMMETRIC"))
                 {
                     Symmetric(msg, encoder, clientStream);
-                } else if(msg.StartsWith("ASYMMETRIC"))
+                }
+
+                if(msg.StartsWith("ASYMMETRIC"))
                 {
                     Asymmetric(msg, encoder, clientStream);
                 }
-                else if (msg.StartsWith("TripleDES"))
+
+                if (msg.StartsWith("TripleDES"))
                 {
                     String decryptedText = des.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
                     WriteMessage(decryptedText);
@@ -114,7 +117,8 @@ namespace ServerApp
                     string encryptedText = des.Encrypt(decryptedText, key);
                     Echo("TripleDES" + ":" + encryptedText +  ":" + key, encoder, clientStream);
                 }
-                else if (msg.StartsWith("DES"))
+
+                if (msg.StartsWith("DES"))
                 {
                     String decryptedText = des1.Decrypt(msg.Split(':')[1], msg.Split(':')[2]);
                     WriteMessage(decryptedText);
@@ -122,14 +126,13 @@ namespace ServerApp
                     string encryptedText = des1.Encrypt(decryptedText, key);
                     Echo("DES" + ":" + encryptedText + ":" + key, encoder, clientStream);
                 }
-                else
+
+                if(msg.Equals("CLOSING"))
                 {
                     connectedClients--;
                     lblNumberOfConnections.Text = connectedClients.ToString();
                     tcpClient.Close();
                 }
-
-
             }
 
             tcpClient.Close();
